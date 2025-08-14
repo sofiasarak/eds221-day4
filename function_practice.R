@@ -63,3 +63,23 @@ animal_age_stop("dog", 100) #returned the warning message!
 animal_age_stop("elephant", 10) #didn't actually figure out how old the elephant is -- error message
 animal_age_stop("dog", "two") #returned error
 
+#Functions meet for loops!
+
+# all the dataframes in the function are called df --> argument df
+
+df_means <- function(df) {
+  for(i in 1:ncol(df)) { #for loop that steps through each column, pulls out the name, and prints this statement
+    if (is.numeric(df[[i]])==TRUE){
+  column_name <- colnames(df[i])
+  col_mean <- mean(df[[i]], na.rm=TRUE)
+  print(paste("The mean value of", column_name, "is", round(col_mean,2)))
+    }
+  }
+  }
+
+#trying the function!
+df_means(df=mtcars)
+
+df_means(palmerpenguins::penguins)
+
+
